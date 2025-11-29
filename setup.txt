@@ -1,0 +1,59 @@
+python3 -m venv myFastAPienv #for creating the venv environment
+source myFastAPienv/bin/activate   #to activating the environment
+
+deactivate   #to deactivte the environment
+
+pip list   #shows all installed Python packages with their versions
+
+pip install fastapi uvicorn
+
+uvicorn main:app --reload      #to run the server
+
+
+#sqlalchemy setup
+pip install sqlalchemy psycopg2 #here psycopg2 is driver for postgresql
+
+
+#use of dependcy injection
+Dependency injection -> matlab aap function ke andar resource nahi banate, FastAPI aapko ready resource deta hai.
+reason to use->
+• Aap har route me database session banana nahi chahte.
+• Bar-bar code repeat hota hai.
+Example, galat tarika->
+@app.get("/products")
+def get_products():
+    db = session()
+    result = db.query(Product).all()
+    db.close()
+    return result
+
+Issue->
+Isse har route me
+• session create
+• session close
+bar-bar likhna padega.
+
+Solution->
+Ek helper function banao jo session bana de.
+FastAPI ko bolo ki jab koi route chale to wo session inject kare.
+code ->
+def get_db():
+    db = session()
+    try:
+        yield db
+    finally:
+        db.close()
+
+
+Unpacking ka simple meaning-> Dictionary ke key value pairs ko alag alag arguments ki tarah pass karna.
+
+
+
+
+ports to run to check->
+
+http://localhost:8000/product/1
+
+http://127.0.0.1:8000/docs
+
+http://localhost:3000/

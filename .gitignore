@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.pyc
+myFastAPienv/
+
+# SQLAlchemy / DB
+*.db
+
+# Node
+frontend/node_modules/
+frontend/build/
+
+# Mac
+.DS_Store
