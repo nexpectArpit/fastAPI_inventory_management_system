@@ -1,5 +1,5 @@
 #isme SQLAlchemy ORM tables honge.Yahi file table structure define karti hai.Database me rows isi file ke hisaab se save hote hain
-from sqlalchemy import Column,Integer,String,Float, true
+from sqlalchemy import Column,Integer,String,Float, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 
 #Ye SQLAlchemy ko batata hai ki: ab hum ORM table models banayenge

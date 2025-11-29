@@ -7,7 +7,7 @@ pip list   #shows all installed Python packages with their versions
 
 pip install fastapi uvicorn
 
-uvicorn main:app --reload      #to run the server
+uvicorn backend.main:app --reload    #to run the server
 
 
 #sqlalchemy setup
