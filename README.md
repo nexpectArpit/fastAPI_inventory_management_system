@@ -2,6 +2,14 @@
 
 **Project:** Simple product-tracking demo using FastAPI (backend) and a React frontend.
 
+
+**Project snapshots:**
+- Backend UI image via Swagger UI
+![Backend ](assets/backend_img_via_swagger.png)
+- Frontend
+![frontend](assets/frontend_img.png)
+
+
 **Purpose:** Demonstrates a small CRUD API backed by SQLAlchemy and a create-react-app frontend that talks to the API.
 
 ---
