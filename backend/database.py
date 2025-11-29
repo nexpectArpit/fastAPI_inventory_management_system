@@ -1,8 +1,13 @@
 #Ye database connection handle karta hai
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from dotenv import load_dotenv
+import os
 
-db_url="postgresql://arpittripathi@localhost:5432/arpittripathi"
+load_dotenv()
+
+db_url=os.getenv("DATABASE_URL")
+print("DB URL:", db_url)#just for check
 
 #Engine ke through SQLAlchemy SQL queries bhejta hai, results leta hai, aur sessions create karta hai.
 engine=create_engine(db_url)

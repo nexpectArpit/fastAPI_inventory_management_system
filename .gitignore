@@ -12,3 +12,5 @@ frontend/build/
 
 # Mac
 .DS_Store
+
+.env

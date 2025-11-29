@@ -13,6 +13,9 @@ uvicorn backend.main:app --reload    #to run the server
 #sqlalchemy setup
 pip install sqlalchemy psycopg2 #here psycopg2 is driver for postgresql
 
+# for .env file # which contian our db url(of postgresql one)
+pip install python-dotenv
+
 
 #use of dependcy injection
 Dependency injection -> matlab aap function ke andar resource nahi banate, FastAPI aapko ready resource deta hai.
