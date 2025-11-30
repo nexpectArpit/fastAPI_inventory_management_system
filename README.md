@@ -2,13 +2,15 @@
 
 **Project:** Simple product-tracking demo using FastAPI (backend) and a React frontend.
 
-##Deployments
-Backend
+**Deployments:**
+- Backend
 https://fastapi-inventory-management-system.onrender.com
 
-Frontend
+- Frontend
 https://fastapi-inventory-management-system-1.onrender.com/
 
+Note: Free PostgreSQL resets monthly on Render.  
+If backend is inactive, ping the app or recreate DB before testing.
 
 **Project snapshots:**
 - Backend UI image via Swagger UI
