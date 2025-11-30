@@ -1,7 +1,7 @@
 from fastapi import Depends,FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from backend.models import Product
-from backend.database import session,engine
+from backend.database import SessionLocal, engine, get_db
 import backend.database_models as database_models
 from sqlalchemy.orm import Session
 
@@ -11,8 +11,10 @@ app=FastAPI()
 #to hnadle the cors error
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
-    allow_methods=["*"]
+    allow_origins=["*"],  # In production, replace with specific frontend URL
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
 )
 
 #contains all your SQLAlchemy ORM classes
@@ -33,8 +35,8 @@ products=[
 ]
 
 def get_db():#a helper function use for dependency injection
-    db=session()#creating the session
-    try:#chake na chale, session start hua toh close bhi hoga
+    db=SessionLocal()#creating the session
+    try:#chahe chale na chale, session start hua toh close bhi hoga
         yield db#waiting for other (routes) to use it
     finally:#yeh hamesa chalega
         db.close()#closing the sessions
@@ -42,7 +44,7 @@ def get_db():#a helper function use for dependency injection
 
 
 def init_db():#fn. to add data in db
-    db=session()
+    db=SessionLocal()
     count=db.query(database_models.Product).count()
     if (count==0):
         for product in products:

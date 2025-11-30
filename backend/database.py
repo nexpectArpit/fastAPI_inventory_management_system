@@ -4,7 +4,9 @@ from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
 import os
 
-load_dotenv()
+
+base = os.path.dirname(os.path.abspath(__file__))
+load_dotenv(os.path.join(base, ".env"))
 
 db_url=os.getenv("DATABASE_URL")
 print("DB URL:", db_url)#just for check
@@ -13,4 +15,11 @@ print("DB URL:", db_url)#just for check
 engine=create_engine(db_url)
 
 #Flush memory data ko SQL statements me convert karta hai, par database me commit nahi karta.
-session=sessionmaker(autocommit=False,autoflush=False,bind=engine)
+SessionLocal=sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
