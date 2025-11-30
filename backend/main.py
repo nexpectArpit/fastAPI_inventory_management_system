@@ -1,8 +1,8 @@
 from fastapi import Depends,FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .models import Product
-from .database import SessionLocal, engine, get_db
-from . import database_models
+from backend.models import Product
+from backend.database import SessionLocal, engine, get_db
+import backend.database_models as database_models
 from sqlalchemy.orm import Session
 
 
