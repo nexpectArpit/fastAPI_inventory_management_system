@@ -2,6 +2,13 @@
 
 **Project:** Simple product-tracking demo using FastAPI (backend) and a React frontend.
 
+##Deployments
+Backend
+https://fastapi-inventory-management-system.onrender.com
+
+Frontend
+https://fastapi-inventory-management-system-1.onrender.com/
+
 
 **Project snapshots:**
 - Backend UI image via Swagger UI
