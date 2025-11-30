@@ -14,7 +14,10 @@ db_url = os.getenv("DATABASE_URL")
 
 # Handle postgres:// to postgresql:// conversion (some providers use postgres://)
 if db_url and db_url.startswith("postgres://"):
-    db_url = db_url.replace("postgres://", "postgresql://", 1)
+    db_url = db_url.replace("postgres://", "postgresql+psycopg://", 1)
+elif db_url and db_url.startswith("postgresql://"):
+    # Use psycopg3 driver for better Python 3.13 compatibility
+    db_url = db_url.replace("postgresql://", "postgresql+psycopg://", 1)
 
 if not db_url:
     raise ValueError("DATABASE_URL environment variable is not set")
