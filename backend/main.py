@@ -1,8 +1,8 @@
 from fastapi import Depends,FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from backend.models import Product
-from backend.database import SessionLocal, engine, get_db
-import backend.database_models as database_models
+from .models import Product
+from .database import SessionLocal, engine, get_db
+from . import database_models
 from sqlalchemy.orm import Session
 
 
@@ -33,15 +33,6 @@ products=[
     Product(id=3,name="pen",description="ball pen",price=3,quantity=30),
     Product(id=5,name="table",description="wooden",price=700,quantity=800)
 ]
-
-def get_db():#a helper function use for dependency injection
-    db=SessionLocal()#creating the session
-    try:#chahe chale na chale, session start hua toh close bhi hoga
-        yield db#waiting for other (routes) to use it
-    finally:#yeh hamesa chalega
-        db.close()#closing the sessions
-
-
 
 def init_db():#fn. to add data in db
     db=SessionLocal()
